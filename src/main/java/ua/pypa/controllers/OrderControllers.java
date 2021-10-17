@@ -1,8 +1,6 @@
 package ua.pypa.controllers;
 
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import ua.pypa.models.OrderC;
 import ua.pypa.repository.OrderRepo;
-import ua.pypa.service.OrderService;
 
 
 import javax.validation.Valid;
@@ -21,9 +18,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/orders")
 public class OrderControllers {
-
-    @Autowired
-    private OrderService orderService;
 
     private final OrderRepo orderRepo;
 
@@ -70,6 +64,7 @@ public class OrderControllers {
 
         return "redirect:/orders";
     }
+
     //edit person
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model){
@@ -81,9 +76,8 @@ public class OrderControllers {
 
         if(orderC != null){
             orderRepo.save(orderC);
-        }else {
-            //throw exception
         }
+
         return "redirect:/orders";
     }
 

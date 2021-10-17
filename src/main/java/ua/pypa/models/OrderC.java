@@ -1,13 +1,12 @@
 package ua.pypa.models;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.lang.NonNull;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Transient;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Entity
@@ -27,10 +26,6 @@ public class OrderC {
     private int deposit;
     private int surcharge;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "order_id")
-//    private Customer customer;
-
     @Transient
     Date Date = new Date();
 
@@ -39,14 +34,10 @@ public class OrderC {
 
     private String finishDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_phone")
-    private Customer customer;
-
     public OrderC() {
     }
 
-    public OrderC(String name, String phone, String assembly, String delivery, String assembling, int price, int deposit, String finishDate, Customer customer) {
+    public OrderC(String name, String phone, String assembly, String delivery, String assembling, int price, int deposit, String finishDate) {
         this.name = name;
         this.phone = phone;
         this.assembly = assembly;
@@ -55,7 +46,6 @@ public class OrderC {
         this.price = price;
         this.deposit = deposit;
         this.finishDate = finishDate;
-        this.customer = customer;
     }
 
     @NonNull
@@ -147,11 +137,4 @@ public class OrderC {
         return id;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 }
