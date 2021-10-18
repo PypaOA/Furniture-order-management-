@@ -3,7 +3,7 @@ Web application for Create Read Update and Delete data from tables MySQL databas
 Registration and authorization of user distribution roles User and Admin
 
 ---
-###Functional
+### Functional
 * Registration and authorization
 * Separation of roles (admin, user)
 * Add a new order
@@ -13,7 +13,7 @@ Registration and authorization of user distribution roles User and Admin
 * Select by phone number
 
 ---
-###Use of technology
+### Use of technology
 * Spring boot
 * Spring security
 * MySQL database
